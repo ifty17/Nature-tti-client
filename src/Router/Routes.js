@@ -1,3 +1,5 @@
+import Login from "../LoginAuthentication/Login";
+import SignUp from "../LoginAuthentication/SignUp";
 import DetailService from "../Pages/Services/DetailService";
 import Services from "../Pages/Services/Services";
 
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
         path: "/services/:id",
         loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`),
         element: <DetailService></DetailService>
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/signup',
+        element: <SignUp></SignUp>
       },
     ],
   },
