@@ -1,8 +1,12 @@
 import React from 'react';
+// import leopard from "../../assets/leopard.jpg";
 
 const Nav = () => {
     return (
-      <div className="navbar bg-base-100">
+      <div
+        className="navbar bg-base-100"
+        // style={{ backgroundImage: `url(${leopard})` }}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
