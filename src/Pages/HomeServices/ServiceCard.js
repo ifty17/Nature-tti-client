@@ -14,9 +14,10 @@ const ServiceCard = ({ service }) => {
           <p>{details.slice(0, 100) + '.....'}<Link>read more</Link></p>
           <div className="card-actions justify-end items-center">
             <p className='text-xl'>Price: ${price} only</p>
-            <button className="btn btn-primary">Book Now</button>
+            <button className="btn btn-primary">View Details</button>
           </div>
         </div>
+        
       </div>
     
   );

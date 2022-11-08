@@ -17,10 +17,10 @@ const Home = () => {
               <h1 className="mb-5 text-3xl md:text-5xl font-bold text-white">
                 Find the best Photographer!
               </h1>
-              <p className="mb-5 ">
+              <p className="mb-5 text-xl">
                 I will help you to grow your business!
               </p>
-              <button className="btn btn-primary">Get Started</button>
+              <button className="btn btn-primary">Hire me!</button>
             </div>
           </div>
         </div>

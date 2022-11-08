@@ -1,12 +1,11 @@
 import React from 'react';
-// import leopard from "../../assets/leopard.jpg";
+import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 
 const Nav = () => {
     return (
       <div
         className="navbar bg-base-100"
-        // style={{ backgroundImage: `url(${leopard})` }}
       >
         <div className="navbar-start">
           <div className="dropdown">
@@ -60,7 +59,7 @@ const Nav = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl w-[80%] md:w-[50%] "><img src={logo} alt="" /></a>
+          <Link to='/' className="btn btn-ghost normal-case text-xl w-[80%] md:w-[50%] "><img src={logo} alt="" /></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
