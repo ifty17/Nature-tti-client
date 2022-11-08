@@ -1,5 +1,6 @@
 import React from 'react';
 // import leopard from "../../assets/leopard.jpg";
+import logo from '../../assets/logo.png'
 
 const Nav = () => {
     return (
@@ -59,7 +60,7 @@ const Nav = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a className="btn btn-ghost normal-case text-xl w-[80%] md:w-[50%] "><img src={logo} alt="" /></a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
