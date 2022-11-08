@@ -1,11 +1,13 @@
 import React from 'react';
 import leopard from '../../assets/leopard.jpg'
 import HomeServices from '../HomeServices/HomeServices';
+import PhotoGrapher from '../PhotoGrapher/PhotoGrapher';
 
 const Home = () => {
     return (
+      <div>
         <div
-          className="hero min-h-screen rounded-3xl my-5 "
+          className="hero md:min-h-screen rounded-3xl my-5 "
           style={{ backgroundImage: `url(${leopard})` }}
         >
           <div className="bg-opacity-60"></div>
@@ -21,6 +23,11 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <div>
+            <PhotoGrapher></PhotoGrapher>
+            <HomeServices></HomeServices>
+        </div>
+      </div>
     );
 };
 
