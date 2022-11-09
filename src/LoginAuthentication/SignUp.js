@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -15,13 +15,14 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const name = form.name.value;
-        const photo = form.photo.value;
-        console.log(name, photo, email, password);
+        const photoURL = form.photo.value;
+        console.log(name, photoURL, email, password);
 
         createUser(email, password)
         .then(result =>{
             const user = result.user;
             console.log(user);
+            handleUpdateUserProfile(name, photoURL);
             form.reset();
             navigate(from, { replace: true });
         })
@@ -30,6 +31,16 @@ const SignUp = () => {
         })
 
     }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+      const profile = {
+        displayName: name,
+        photoURL: photoURL,
+      };
+      updateUserProfile(profile)
+        .then(() => {})
+        .catch((error) => console.error(error));
+    };
 
     return (
       <div>

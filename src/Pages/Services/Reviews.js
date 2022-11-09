@@ -15,7 +15,7 @@ const Reviews = () => {
         .then(data =>{
             setReviews(data)
         })
-    }, [user?.email])
+    }, [reviews._id])
 
     return (
       <div>
