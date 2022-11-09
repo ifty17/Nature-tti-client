@@ -9,15 +9,7 @@ const PrivateRoute = ({children}) => {
 
     if(loading){
         return (
-          <ColorRing
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="blocks-loading"
-            wrapperStyle={{}}
-            wrapperClass="blocks-wrapper"
-            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
-          />
+         <p>Loading.....</p>
         );
     }
 
@@ -25,9 +17,8 @@ const PrivateRoute = ({children}) => {
         return children;
     }
 
-    return (
-        <Navigate to='/loading' state={{form: location}} replace></Navigate>
-    );
+    return <Navigate to='/login' state={{form: location}} replace></Navigate>;
+    
 };
 
 export default PrivateRoute;

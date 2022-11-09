@@ -2,6 +2,7 @@ import Login from "../LoginAuthentication/Login";
 import SignUp from "../LoginAuthentication/SignUp";
 import DetailService from "../Pages/Services/DetailService";
 import Services from "../Pages/Services/Services";
+import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../Layout/Main");
@@ -23,16 +24,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/services/:id",
-        loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`),
-        element: <DetailService></DetailService>
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/services/${params.id}`),
+        element: <DetailService></DetailService>,
       },
       {
-        path: '/login',
-        element: <Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path: '/signup',
-        element: <SignUp></SignUp>
+        path: "/signup",
+        element: <SignUp></SignUp>,
       },
     ],
   },
