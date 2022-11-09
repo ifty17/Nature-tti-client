@@ -3,7 +3,7 @@ import logo from '../../assets/logo2.jpg'
 
 const Footer = () => {
     return (
-      <div>
+      <div className="mt-20">
         <footer className="footer p-10 bg-base-200 text-base-content">
           <div>
             <span className="footer-title font-bold text-xl">Services</span>
@@ -29,7 +29,7 @@ const Footer = () => {
         <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
           <div className="items-center grid-flow-col">
             <img src={logo} alt="" />
-            
+
             <p>
               Wild life with Rahat <br />
               Providing reliable wild life photography since 1777
