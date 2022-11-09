@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { AuthContext } from "../../context/AuthProvider";
+import Reviews from "./Reviews";
 
 const DetailService = () => {
   const { name, details, img, price, _id } = useLoaderData();
@@ -15,10 +16,11 @@ const DetailService = () => {
     const review = form.message.value;
     const image = user?.photoURL;
     const userName = user?.displayName;
-    // console.log(review, image, userName);
+    const email = user.email;
+    console.log(review, image, userName, email);
 
     const data = {
-      review, image, userName
+      review, image, userName, email
     }
     
 
@@ -73,6 +75,7 @@ const DetailService = () => {
             </div>
           </form>
         </div>
+        <Reviews></Reviews>
       </div>
     </div>
   );

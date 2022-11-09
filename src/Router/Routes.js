@@ -1,6 +1,7 @@
 import Login from "../LoginAuthentication/Login";
 import SignUp from "../LoginAuthentication/SignUp";
 import DetailService from "../Pages/Services/DetailService";
+import Reviews from "../Pages/Services/Reviews";
 import Services from "../Pages/Services/Services";
 import PrivateRoute from "./PrivateRoute";
 
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp></SignUp>,
       },
+      
     ],
   },
 ]);
