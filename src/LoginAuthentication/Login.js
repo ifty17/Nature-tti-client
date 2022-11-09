@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+
+    const handleLogin = event =>{
+        event.preventDefault();
+    }
+
+
     return (
       <div>
         <div className="hero min-h-screen">
@@ -40,7 +46,12 @@ const Login = () => {
                   </label>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Login</button>
+                  <input
+                    onSubmit={handleLogin}
+                    className="btn btn-primary"
+                    type="submit"
+                    value="Login"
+                  />
                 </div>
               </form>
             </div>
