@@ -1,8 +1,10 @@
 import React from 'react';
 import Swal from "sweetalert2";
+import useTitle from '../../Hooks/UseTitle';
 
 
 const MyServices = () => {
+    useTitle("Add Services - Nature tti")
     
     const handleAddService = event =>{
         event.preventDefault();

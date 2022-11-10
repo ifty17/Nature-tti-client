@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 
 const Login = () => {
-    const { loginUser, loginWithGoogle } = useContext(AuthContext);
+    const { loginUser, loginWithGoogle, setLoading } = useContext(AuthContext);
     const [error, setError] = useState("");
     const location = useLocation();
     const navigate = useNavigate()
@@ -17,33 +17,38 @@ const Login = () => {
         const password = form.password.value;
 
         loginUser(email, password)
-        .then(result =>{
+          .then((result) => {
             const user = result.user;
             console.log(user);
             form.reset();
-            setError('');
+            setError("");
             navigate(from, { replace: true });
-            
-        })
-        .catch(err =>{
+          })
+          .catch((err) => {
             console.error(err);
-            setError(err.message)
-        })
+            setError(err.message);
+          })
+          .finally(() => {
+            setLoading(false);
+          });
 
     }
         const provider = new GoogleAuthProvider();
 
         const handleGoogle = () => {
           loginWithGoogle(provider)
-          .then(result => {
-            const user = result.user;
-            setError('')
-            console.log(user);
-          })
-          .catch(err =>{
-            console.error(err);
-            setError(err.message);
-          })
+            .then((result) => {
+              const user = result.user;
+              setError("");
+              console.log(user);
+            })
+            .catch((err) => {
+              console.error(err);
+              setError(err.message);
+            })
+            .finally(() => {
+              setLoading(false);
+            });
         };
 
 

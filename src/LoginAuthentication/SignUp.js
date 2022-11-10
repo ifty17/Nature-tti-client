@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 
@@ -7,6 +7,7 @@ const SignUp = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
+    const [error, setError] = useState("");
     const from = location.state?.from?.pathname || "/";
 
     const handleSignUp = event =>{
@@ -24,11 +25,14 @@ const SignUp = () => {
             console.log(user);
             handleUpdateUserProfile(name, photoURL);
             form.reset();
+            setError('')
             navigate(from, { replace: true });
         })
         .catch(err =>{
             console.error(err);
+            setError(err.messages)
         })
+        
 
     }
 
@@ -106,6 +110,7 @@ const SignUp = () => {
                   <button className="btn btn-primary">Sign Up</button>
                 </div>
               </form>
+              {error}
             </div>
           </div>
         </div>

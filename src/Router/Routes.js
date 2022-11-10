@@ -1,5 +1,7 @@
 import Login from "../LoginAuthentication/Login";
 import SignUp from "../LoginAuthentication/SignUp";
+import Error from "../Pages/Error/Error";
+import Blogs from "../Pages/Services/Blogs";
 import DetailService from "../Pages/Services/DetailService";
 import MyReviews from "../Pages/Services/MyReviews";
 import MyServices from "../Pages/Services/MyServices";
@@ -22,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/services",
-        loader: () => fetch("http://localhost:5000/services"),
+        // loader: () => fetch("http://localhost:5000/services"),
         element: <Services></Services>,
       },
       {
@@ -58,7 +60,15 @@ const router = createBrowserRouter([
       {
         path: '/userReviews',
         element: <UserReview></UserReview>
-      }
+      },
+      {
+        path: '*',
+        element: <Error></Error>
+      },
+      {
+        path: '/blogs',
+        element: <Blogs></Blogs>
+      },
     ],
   },
 ]);

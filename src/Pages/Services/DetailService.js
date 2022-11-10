@@ -3,13 +3,16 @@ import { useLoaderData } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { AuthContext } from "../../context/AuthProvider";
+import RevOfUser from "./RevOfUser";
 const DetailService = () => {
   const { name, details, img, price, _id } = useLoaderData();
   const { user } = useContext(AuthContext);
-  console.log(user);
-
  
+  
+  const [revs, setRevs] = useState([])
+  console.log(revs);
 
+  
   const handleReviews = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -23,25 +26,32 @@ const DetailService = () => {
     const data = {
       review, image, userName, email, serviceId: _id, price
     }
-
-    // fetch("http://localhost:5000/storeReview")
-    // .then(res => res.json())
-    // .then(data => console.log(data))
     
-
+    
     fetch("http://localhost:5000/storeReview", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            form.reset();
-          })
-          .catch((error) => console.error(error));
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      form.reset();
+    })
+    .catch((error) => console.error(error));
+
+
+
+
+    fetch(`http://localhost:5000/storeReview?serviceID=${_id}`)
+      .then((res) => res.json())
+      .then((data) => setRevs(data));
+      console.log(data);
+
+
+
   }
   return (
     <div>
@@ -79,6 +89,14 @@ const DetailService = () => {
               <input type='submit' className="btn btn-primary" value='Post' />
             </div>
           </form>
+        </div>
+        <div>
+          {
+            revs?.map(reviews => <RevOfUser
+            key={reviews._id}
+            reviews={reviews}
+            ></RevOfUser>)
+          }
         </div>
       </div>
     </div>
