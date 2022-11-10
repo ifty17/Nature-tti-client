@@ -1,9 +1,9 @@
 import React from 'react';
-  import { ToastContainer, toast } from "react-toastify";
-  import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
+
 
 const MyServices = () => {
-
+    
     const handleAddService = event =>{
         event.preventDefault();
         const form = event.target;
@@ -16,6 +16,7 @@ const MyServices = () => {
         const data ={
             name, img, details, rating, price
         }
+        console.log(data);
         
         fetch("http://localhost:5000/services", {
             method: "POST",
@@ -28,12 +29,11 @@ const MyServices = () => {
         .then((data) => {
             console.log(data);
             form.reset();
-            alert('added')
+            Swal.fire("Good job!", "You added the service!", "success");
         })
         .catch((error) => console.error(error));
-        
-        
     }
+    
 
     return (
       <form onSubmit={handleAddService}>
