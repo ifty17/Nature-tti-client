@@ -3,6 +3,7 @@ import SignUp from "../LoginAuthentication/SignUp";
 import Error from "../Pages/Error/Error";
 import Blogs from "../Pages/Services/Blogs";
 import DetailService from "../Pages/Services/DetailService";
+import EditReview from "../Pages/Services/EditReview";
 import MyReviews from "../Pages/Services/MyReviews";
 import MyServices from "../Pages/Services/MyServices";
 import Services from "../Pages/Services/Services";
@@ -58,16 +59,22 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
       {
-        path: '/userReviews',
-        element: <UserReview></UserReview>
+        path: "/userReviews",
+        element: <UserReview></UserReview>,
       },
       {
-        path: '*',
-        element: <Error></Error>
+        path: "*",
+        element: <Error></Error>,
       },
       {
-        path: '/blogs',
-        element: <Blogs></Blogs>
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
+      {
+        path: "/updateReview/:id",
+        element: <EditReview></EditReview>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/updateReview/${params.id}`),
       },
     ],
   },

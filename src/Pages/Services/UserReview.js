@@ -1,6 +1,7 @@
 import React from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import { Link } from "react-router-dom";
 const UserReview = ({ rev, handleDelete }) => {
   const { review, image, userName, email, serviceId, _id } = rev;
   console.log(_id);
@@ -12,14 +13,12 @@ const UserReview = ({ rev, handleDelete }) => {
           <img className="rounded-full w-12" src={image} alt="" />
           <p>{userName}</p>
           <div className="card-actions justify-end">
-            <button
-              
-              type="submit"
-              className="btn btn-primary"
-            >
-              <FaEdit />
-            </button>
-        
+            <Link to={`/updateReview/${_id}`}>
+              <button type="submit" className="btn btn-primary">
+                <FaEdit />
+              </button>
+            </Link>
+
             <button
               onClick={() => handleDelete(_id)}
               type="submit"
