@@ -12,7 +12,7 @@ const DetailService = () => {
   const [revs, setRevs] = useState([])
   console.log(revs);
 
-  
+
   const handleReviews = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -20,39 +20,50 @@ const DetailService = () => {
     const image = user?.photoURL;
     const userName = user?.displayName;
     const email = user.email;
-    
+
     console.log(review, image, userName, email);
 
     const data = {
-      review, image, userName, email, serviceId: _id, price
-    }
-    
-    
-    fetch("http://localhost:5000/storeReview", {
+      review,
+      image,
+      userName,
+      email,
+      serviceId: _id,
+      price,
+    };
+
+    fetch("http://localhost:5000/storeReview/", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(data),
     })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      form.reset();
-    })
-    .catch((error) => console.error(error));
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        form.reset();
+      })
+      .catch((error) => console.error(error));
 
 
 
-
-    fetch(`http://localhost:5000/storeReview?serviceID=${_id}`)
+    fetch(`http://localhost:5000/storeReview?serviceId=${_id}`)
       .then((res) => res.json())
       .then((data) => setRevs(data));
-      console.log(data);
+    // console.log(data);
+  };;
+
+  
+  useEffect(() => {
+    fetch(`http://localhost:5000/storeReview?serviceId=${_id}`)
+      .then((res) => res.json())
+      .then((data) => setRevs(data));
+    // console.log(data);
+  },[_id]);
 
 
 
-  }
   return (
     <div>
       <h1 className="text-3xl font-bold py-5">{name}</h1>
@@ -66,7 +77,7 @@ const DetailService = () => {
           <p className="my-5">{details}</p>
         </div>
         <div className="card  bg-base-100 shadow-xl">
-          <form onSubmit={handleReviews}  className="card-body">
+          <form onSubmit={handleReviews} className="card-body">
             <h2 className="card-title">write your review</h2>
             <div className="flex justify-center items-center gap-3">
               {user?.photoURL ? (
@@ -86,17 +97,15 @@ const DetailService = () => {
               name="message"
             ></textarea>
             <div className="card-actions justify-end">
-              <input type='submit' className="btn btn-primary" value='Post' />
+              <input type="submit" className="btn btn-primary" value="Post" />
             </div>
           </form>
         </div>
         <div>
-          {
-            revs?.map(reviews => <RevOfUser
-            key={reviews._id}
-            reviews={reviews}
-            ></RevOfUser>)
-          }
+          {revs.map((userReview) => <RevOfUser
+          key={userReview._id}
+          userReview={userReview}
+          ></RevOfUser> )}
         </div>
       </div>
     </div>
