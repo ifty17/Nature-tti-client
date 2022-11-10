@@ -17,6 +17,7 @@ const DetailService = () => {
     const image = user?.photoURL;
     const userName = user?.displayName;
     const email = user.email;
+    
     console.log(review, image, userName, email);
 
     const data = {
@@ -34,7 +35,7 @@ const DetailService = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            
+            form.reset();
           })
           .catch((error) => console.error(error));
   }

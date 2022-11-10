@@ -23,11 +23,11 @@ const PrivateRoute = ({children}) => {
         );
     }
 
-    if(user){
-        return children;
+    if(!user){
+      return <Navigate to='/login' state={{form: location}} replace></Navigate>;
     }
+    return children;
 
-    return <Navigate to='/login' state={{form: location}} replace></Navigate>;
     
 };
 
