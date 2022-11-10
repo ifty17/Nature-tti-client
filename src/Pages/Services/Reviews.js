@@ -7,15 +7,6 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     console.log(reviews);
 
-    
-    
-    useEffect(() =>{
-        fetch("http://localhost:5000/storeReview")
-        .then(res => res.json())
-        .then(data =>{
-            setReviews(data)
-        })
-    }, [reviews._id])
 
     return (
       <div>

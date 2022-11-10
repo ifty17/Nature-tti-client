@@ -1,6 +1,7 @@
 import Login from "../LoginAuthentication/Login";
 import SignUp from "../LoginAuthentication/SignUp";
 import DetailService from "../Pages/Services/DetailService";
+import MyReviews from "../Pages/Services/MyReviews";
 import MyServices from "../Pages/Services/MyServices";
 import Reviews from "../Pages/Services/Reviews";
 import Services from "../Pages/Services/Services";
@@ -31,8 +32,20 @@ const router = createBrowserRouter([
         element: <DetailService></DetailService>,
       },
       {
-        path: '/myservices',
-        element: <MyServices></MyServices>
+        path: "/myservices",
+        element: (
+          <PrivateRoute>
+            <MyServices></MyServices>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myreviews",
+        element: (
+          <PrivateRoute>
+            <MyReviews></MyReviews>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
@@ -42,7 +55,6 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp></SignUp>,
       },
-      
     ],
   },
 ]);

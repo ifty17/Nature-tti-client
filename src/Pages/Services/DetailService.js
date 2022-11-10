@@ -20,7 +20,7 @@ const DetailService = () => {
     console.log(review, image, userName, email);
 
     const data = {
-      review, image, userName, email
+      review, image, userName, email, serviceId: _id, price
     }
     
 

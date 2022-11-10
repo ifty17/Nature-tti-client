@@ -20,10 +20,10 @@ const Nav = () => {
         user?.email ?
         <>
         <li className="font-semibold">
-        <Link to="/myservices">My services</Link>
+        <Link to="/myservices">Add services</Link>
       </li>
       <li className="font-semibold">
-        <Link to="/">My reviews</Link>
+        <Link to="/myreviews">My reviews</Link>
       </li>
         </>
         :

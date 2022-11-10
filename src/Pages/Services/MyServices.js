@@ -80,8 +80,12 @@ const MyServices = () => {
             className="input input-bordered input-primary w-full"
           />
         </div>
-        <div className="card-actions justify-end">
-          <input type="submit" className="btn btn-primary" value="Post" />
+        <div>
+          <input
+            type="submit"
+            className="btn btn-primary w-full"
+            value="Post"
+          />
         </div>
       </form>
     );
