@@ -27,8 +27,6 @@ const UserReview = ({ rev, handleDelete }) => {
             >
               <MdDeleteForever />
             </button>
-            {/* The button to open modal */}
-            {/* <a className="btn">open modal</a> */}
           </div>
         </div>
         <p>Opinion: {review}</p>

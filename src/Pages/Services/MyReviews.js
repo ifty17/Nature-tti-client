@@ -5,9 +5,10 @@ import UserReview from "./UserReview";
 const MyReviews = () => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
+  console.log(reviews);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/storeReview?email=${user?.email}`)
+    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -15,19 +16,20 @@ const MyReviews = () => {
   }, [user?.email]);
 
   const handleDelete = (id) => {
+    console.log(id);
     const proceed = window.confirm(
       "Are you sure you want to delete this review?"
     );
     if (proceed) {
-      fetch(`http://localhost:5000/storeReview/${id}`, {
+      fetch(`http://localhost:5000/reviews/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          if(data.deletedCount > 0){
-            alert('Deleted successfully')
-            const remaining = reviews.filter(rev => rev._id !== id);
+          if (data.deletedCount > 0) {
+            alert("Deleted successfully");
+            const remaining = reviews.filter((rev) => rev._id !== id);
             setReviews(remaining);
           }
         });

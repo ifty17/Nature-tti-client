@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { AuthContext } from "../../context/AuthProvider";
-import Reviews from "./Reviews";
-
 const DetailService = () => {
   const { name, details, img, price, _id } = useLoaderData();
   const { user } = useContext(AuthContext);
   console.log(user);
+
+ 
 
   const handleReviews = (event) => {
     event.preventDefault();
@@ -23,6 +23,10 @@ const DetailService = () => {
     const data = {
       review, image, userName, email, serviceId: _id, price
     }
+
+    // fetch("http://localhost:5000/storeReview")
+    // .then(res => res.json())
+    // .then(data => console.log(data))
     
 
     fetch("http://localhost:5000/storeReview", {
@@ -52,7 +56,7 @@ const DetailService = () => {
           <p className="my-5">{details}</p>
         </div>
         <div className="card  bg-base-100 shadow-xl">
-          <form onSubmit={handleReviews} className="card-body">
+          <form onSubmit={handleReviews}  className="card-body">
             <h2 className="card-title">write your review</h2>
             <div className="flex justify-center items-center gap-3">
               {user?.photoURL ? (
@@ -76,7 +80,6 @@ const DetailService = () => {
             </div>
           </form>
         </div>
-        <Reviews></Reviews>
       </div>
     </div>
   );

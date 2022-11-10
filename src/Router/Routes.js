@@ -3,8 +3,8 @@ import SignUp from "../LoginAuthentication/SignUp";
 import DetailService from "../Pages/Services/DetailService";
 import MyReviews from "../Pages/Services/MyReviews";
 import MyServices from "../Pages/Services/MyServices";
-import Reviews from "../Pages/Services/Reviews";
 import Services from "../Pages/Services/Services";
+import UserReview from "../ReviewOfService/UserReview";
 import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -55,6 +55,10 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp></SignUp>,
       },
+      {
+        path: '/userReviews',
+        element: <UserReview></UserReview>
+      }
     ],
   },
 ]);
